@@ -9,6 +9,6 @@ const DonationSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, { timestamps: true }); // ✅ adds createdAt (for sorting)
+}, { timestamps: true }); // ✅ needed for sorting
 
 module.exports = mongoose.model("Donation", DonationSchema);
