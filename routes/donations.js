@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Donation = require("../models/Donation");
 
-
-// ✅ ADD DONATION
+// ✅ ADD donation
 router.post("/", async (req, res) => {
   try {
     const { amount, username } = req.body;
@@ -14,25 +13,20 @@ router.post("/", async (req, res) => {
     });
 
     await donation.save();
-
     res.json(donation);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json(err);
   }
 });
 
-
-// ✅ GET DONATIONS (LATEST FIRST 🔥)
+// ✅ GET all donations (LATEST FIRST)
 router.get("/", async (req, res) => {
   try {
-    const donations = await Donation.find()
-      .sort({ createdAt: -1 }); // 🔥 newest on top
-
+    const donations = await Donation.find().sort({ createdAt: -1 });
     res.json(donations);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
