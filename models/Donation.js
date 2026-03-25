@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 
 const DonationSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+  amount: {
+    type: Number,
+    required: true
   },
-  amount: Number,
-  message: String
-}, { timestamps: true });
+  username: {
+    type: String,
+    required: true
+  }
+}, { timestamps: true }); // ✅ adds createdAt (for sorting)
 
 module.exports = mongoose.model("Donation", DonationSchema);
