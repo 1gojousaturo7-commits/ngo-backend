@@ -9,6 +9,6 @@ const DonationSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, { timestamps: true }); // ✅ needed for sorting
+}, { timestamps: true });
 
 module.exports = mongoose.model("Donation", DonationSchema);
